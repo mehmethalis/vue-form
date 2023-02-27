@@ -3,7 +3,7 @@
         <div class="modal-popup">
             <div class="modal-header">
                 <h1>Policy</h1>
-                <button @click="$emit('setShow')" class="btn">Close X</button>
+                <button @click="$emit('setShow')" class="btn">X</button>
             </div>
             <div class="modal-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam beatae maiores, minima
                 possimus vero exercitationem voluptates iusto libero hic culpa, ex deleniti eaque nobis quisquam illo unde
@@ -67,6 +67,12 @@ export default {
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 20px;
+}
+
+.btn {
+    border-radius: 15px;
+    height: 21px;
+    width: 20px;
 }
 </style>
    
