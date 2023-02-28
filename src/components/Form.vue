@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Form</h1>
     <div class="form">
       <form action="">
         <label for="">Name</label><br />
@@ -58,7 +57,15 @@ export default {
       this.isShow = !this.isShow;
     },
     submit() {
-      console.log(this.form);
+      let filtered = Object.keys(this.form)
+        .filter((key) => ["name", "lastname", "phone", "email", "city", "district"].includes(key))
+        .reduce((obj, key) => {
+          obj[key] = this.form[key];
+          return obj;
+        }, {});
+
+      filtered = { id: parseInt(Math.random()*100) , ...filtered };
+      this.$emit("submit", filtered);
     },
   },
   components: {
@@ -70,7 +77,7 @@ export default {
 
 <style scoped>
 .form {
-  width: 100%;
+  width: 350px;
 }
 .btn {
   width: 100%;
@@ -94,6 +101,11 @@ input {
   border: solid 2px black;
   outline: none;
   transition: all ease-in-out 0.3s;
+  margin-bottom: 15px;
+}
+input[type="text"],
+input[type="tel"] {
+  width: 100%;
 }
 
 input:focus {
